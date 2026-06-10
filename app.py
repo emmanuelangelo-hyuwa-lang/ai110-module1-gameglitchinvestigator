@@ -7,7 +7,7 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 50            #FIXME: Logic breaks here
     return 1, 100
 
 
@@ -35,9 +35,9 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📈 Go HIGHER!" #FIXME: Logic breaks here
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📉 Go LOWER!"   #FIXME: Logic breaks here
     except TypeError:
         g = str(guess)
         if g == secret:

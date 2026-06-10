@@ -29,7 +29,7 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
-            return "Too High", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!" #FIX Refactored logic here using argent mode. We also changed the comparison between the guess score and the secret score which was comparing in strings instead of integer
         else:
             return "Too Low", "📈 Go HIGHER!"
     except TypeError:

@@ -26,18 +26,17 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+- I used Claude Code for this project in my IDE
+- It correctly suggested a fix to the comparisons of the secret score and the guess score which was intially comapring in strings instead of integer. It had a simple solution of removing all the prior conversions which was faster and more concise than what I was thinking.
+- It however incorectly suggested leaving the label 'too high' with 'go higher' which was missing the point of the hints. This may be due to the fact that it didn't understand the entire project well enough as I was using a more lightweight model which only ensured correct syntax of code. I verified this by working through the logic and doing numerous pytests to confirm my results
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+- I knew the hint bug was fixed because I ran tests on every testcase and edge case that could possibly arise in the py test as well as manually testing it in the streamlit application. 
+- One of the tests I did was checking if it'd print 'Go lower' if I guessed above the secret number which it did. This showed I had fixed the issue in my code
+- AI did help in designing the tests by ensuring I went through every test case possible which was a huge timesaver. 
 
 ---
 

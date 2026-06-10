@@ -4,8 +4,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
+- Hint doesn't reliably give expected output i.e. telling to guess lower when number is actually higher and vice versa
+- Harder modes have shorter ranges which secret number is randomised instead of a larger range
+- Program is one step behind. Guess number button needs to presses, once to reset context and the second to actually submit the guess numbers
   (for example: "the hints were backwards").
 
 **Bug Reproduction Log**
@@ -14,7 +15,7 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
+| Guess of 50 | Too Low | Too High | None |
 | | | | |
 | | | | |
 

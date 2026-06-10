@@ -20,6 +20,7 @@ Document at least 3 bugs you found. Add rows as needed.
 | Difficulty Change to Hard | Increase in range | Decrease in range to 1-50 from 1-100 | None |
 | New Game Button/Command | History Reset, Secret Number Reset| No History Reset, Yes Secret Number Reset | None |
 | New Game Button/Command when maximum attempts are used | New Game starts afresh | Everything is stuck. Nothing new happens except secret number changes | None |
+| Submit Guess button | Guess is submitted and shown in History | Occassional delays. Requires the button to be tapped twice. It inputs for the last number before the currently typed number| None |
 
 ---
 

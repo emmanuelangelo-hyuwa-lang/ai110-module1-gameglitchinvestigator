@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import check_guess, get_range_for_difficulty
+from logic_utils import check_guess, get_range_for_difficulty  #FIX: Refactored logic into logic_utils.py using agent mode
 
 
 def parse_guess(raw: str):
@@ -64,7 +64,7 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
-if "secret" not in st.session_state or st.session_state.get("difficulty") != difficulty:
+if "secret" not in st.session_state or st.session_state.get("difficulty") != difficulty:  #FIX: Refactored logic into logic_utils.py using agent mode
     st.session_state.secret = random.randint(low, high)
     st.session_state.difficulty = difficulty
 
@@ -83,7 +83,7 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between {low} and {high}. "
+    f"Guess a number between {low} and {high}. "  #FIX: Refactored logic into logic_utils.py using agent mode
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 

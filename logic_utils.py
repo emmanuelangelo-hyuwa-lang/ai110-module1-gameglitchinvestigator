@@ -4,6 +4,8 @@ def get_range_for_difficulty(difficulty: str):
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
+    # Bug fix: Hard was returning 1-50 which is smaller than Normal (1-100).
+    # I noticed harder difficulty should mean a bigger range, so I changed it to 1-500.
     if difficulty == "Hard":
         return 1, 500
     return 1, 100
@@ -15,7 +17,21 @@ def parse_guess(raw: str):
 
     Returns: (ok: bool, guess_int: int | None, error_message: str | None)
     """
-    raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+    if raw is None:
+        return False, None, "Enter a guess."
+
+    if raw == "":
+        return False, None, "Enter a guess."
+
+    try:
+        if "." in raw:
+            value = int(float(raw))
+        else:
+            value = int(raw)
+    except Exception:
+        return False, None, "That is not a number."
+
+    return True, value, None
 
 
 def check_guess(guess, secret):
@@ -28,8 +44,10 @@ def check_guess(guess, secret):
         return "Win", "🎉 Correct!"
 
     try:
+        # Bug fix: the hints were backwards — Go HIGHER showed when guess was too high.
+        # I worked through the logic and Claude swapped the messages to match the correct direction.
         if guess > secret:
-            return "Too High", "📉 Go LOWER!" #FIX Refactored logic here using argent mode. We also changed the comparison between the guess score and the secret score which was comparing in strings instead of integer
+            return "Too High", "📉 Go LOWER!"
         else:
             return "Too Low", "📈 Go HIGHER!"
     except TypeError:
@@ -41,6 +59,15 @@ def check_guess(guess, secret):
         return "Too Low", "📈 Go HIGHER!"
 
 
-def update_score(current_score: int, outcome: str, attempt_number: int):
+def update_score(outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
-    raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+    # Bug fix: score was fluctuating up and down due to a +5 bonus on even attempts
+    # for Too High guesses. I wanted a score that only decreases based on attempts.
+    # Claude simplified it to use one consistent formula: 100 - 10 * attempts.
+    if outcome == "Win":
+        points = 100 - 10 * attempt_number
+        if points < 10:
+            points = 10
+        return points
+
+    return max(0, 100 - 10 * attempt_number)

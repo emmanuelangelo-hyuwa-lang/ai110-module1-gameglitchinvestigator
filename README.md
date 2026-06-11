@@ -80,4 +80,14 @@ tests/test_game_logic.py::test_hints_consistent_across_attempts PASSED          
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+### Hot/Cold Emoji Indicators
+
+I added a "temperature" hint system that shows the player how close their guess is to the secret number, on top of the existing Higher/Lower hint.
+
+After `check_guess` returns in `app.py` (inside the `if submit:` block), the distance between the guess and the secret is calculated and displayed:
+
+- 🔥 **Hot** — guess is within 10 of the secret
+- 🌡️ **Warm** — guess is within 25 of the secret
+- ❄️ **Cold** — guess is more than 25 away
+
+This only runs when "Show hint" is enabled and only for non-winning guesses. No changes were made to `logic_utils.py` — it is purely a UI addition in `app.py`.

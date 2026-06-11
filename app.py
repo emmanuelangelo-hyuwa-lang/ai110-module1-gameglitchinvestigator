@@ -108,6 +108,15 @@ if submit:
 
         if show_hint:
             st.warning(message)
+            distance = abs(guess_int - st.session_state.secret)
+            if distance == 0:
+                pass
+            elif distance <= 10:
+                st.info("🔥 Hot! You're very close.")
+            elif distance <= 25:
+                st.info("🌡️ Warm. Getting there.")
+            else:
+                st.info("❄️ Cold. Way off.")
 
         st.session_state.score = update_score(
             outcome=outcome,
